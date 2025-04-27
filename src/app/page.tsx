@@ -1,13 +1,13 @@
 import PoliticalCompass from "@/components/PoliticalCompass/component";
-import { Button } from "@/components/ui/button";
+import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
   return (
-    <>
-      <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
-        <Button className="absolute top-2 left-2">Test</Button>
+    <div className="flex w-full">
+      <Sidebar />
+      <div className="flex-1 flex justify-center items-center min-h-screen bg-gray-50">
         <PoliticalCompass />
       </div>
-    </>
+    </div>
   );
 }
