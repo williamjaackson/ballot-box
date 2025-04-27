@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, X } from "lucide-react";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative flex">
+    <div className="flex">
       <div
-        className={`h-full bg-white shadow-sm transition-all duration-300 ${
+        className={`h-screen bg-white shadow-sm transition-all duration-300 ${
           isOpen ? "w-64" : "w-0"
         } overflow-hidden`}
       >
@@ -18,18 +18,16 @@ export default function Sidebar() {
           <h1 className="text-2xl font-bold">Sidebar</h1>
         </div>
       </div>
+
       <Button
-        className="absolute -right-11 top-2"
+        className={`fixed top-2 transition-all duration-300 ${
+          isOpen ? "left-53" : "left-2"
+        }`}
         variant="outline"
         size="icon"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <ChevronRight
-          className="transition-transform duration-300"
-          style={{
-            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-          }}
-        />
+        {isOpen ? <X /> : <ChevronRight />}
       </Button>
     </div>
   );

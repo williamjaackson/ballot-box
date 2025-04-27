@@ -56,8 +56,8 @@ function Label({
 
 export default function PoliticalCompass() {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="relative w-[500px] h-[500px] bg-white border border-gray-200">
+    <div className="flex flex-col items-center gap-4 w-full p-10">
+      <div className="relative w-full max-w-[500px] aspect-square bg-white border border-gray-200">
         {/* Quadrants */}
         <div className="grid grid-cols-2 grid-rows-2 h-full">
           <Quadrant />
