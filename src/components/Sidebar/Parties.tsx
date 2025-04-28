@@ -7,7 +7,7 @@ function Parties() {
 
   return (
     <div className="flex flex-col gap-2">
-      <h2 className="text-md font-medium uppercase">Political Parties</h2>
+      <h2 className="text-sm font-bold uppercase">Political Parties</h2>
       <div className="flex flex-col gap-2">
         {parties.map((party, index) => (
           <div
