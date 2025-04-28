@@ -1,4 +1,4 @@
-import PoliticalCompass from "@/components/PoliticalCompass/component";
+import PoliticalCompass from "@/components/PoliticalCompass/PoliticalCompass";
 import Sidebar from "@/components/Sidebar/Sidebar";
 
 export default function Home() {
