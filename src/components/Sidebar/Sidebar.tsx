@@ -6,7 +6,7 @@ import { ChevronRight, Plus, Vote, X } from "lucide-react";
 import Parties from "./Parties";
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const sidebarWidth = "25rem";
 
   return (
@@ -29,12 +29,17 @@ export default function Sidebar() {
 
         {/* Toggle Sidebar Button */}
         <Button
-          className={`fixed absolute top-2 transition-all duration-300 ${
-            isOpen ? "right-2" : "-right-11"
-          }`}
+          className="fixed absolute transition-all duration-300 top-2"
           variant="outline"
           size="icon"
           onClick={() => setIsOpen(!isOpen)}
+          style={{
+            transformOrigin: "center",
+            marginLeft: isOpen ? sidebarWidth : 0,
+            transform: isOpen
+              ? "translateX(-100%) translateX(-.5rem)"
+              : "translateX(.5rem)",
+          }}
         >
           {isOpen ? <X /> : <ChevronRight />}
         </Button>
