@@ -23,7 +23,7 @@ export function PartiesProvider({ children }: { children: ReactNode }) {
       name: "Liberal National Party",
       alias: "LNP",
       color: [100, 149, 237],
-      position: [1, 1.05],
+      position: [1, 1],
     },
     {
       name: "One Nation",
