@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { ChevronRight, Plus, Vote, X } from "lucide-react";
 
 export default function Sidebar() {
