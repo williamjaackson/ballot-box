@@ -76,7 +76,6 @@ function PartyDot({
         left: `${x}%`,
         bottom: `${y}%`,
       }}
-      title={`${party.name} (${party.position[0]}, ${party.position[1]})`}
     >
       {/* tooltip */}
       <p
