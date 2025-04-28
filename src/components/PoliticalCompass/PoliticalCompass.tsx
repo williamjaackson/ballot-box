@@ -2,96 +2,8 @@
 
 import { useParties } from "@/context/PartiesContext";
 import Quadrant from "./Quadrant";
-
-
-function Label({
-  text,
-  position,
-}: {
-  text: string;
-  position: "top" | "bottom" | "left" | "right";
-}) {
-  return (
-    <p
-      style={{
-        textTransform: "uppercase",
-        fontFamily: "Inter",
-        fontWeight: 500,
-        color: "#666",
-        width: "100%",
-        textAlign: "center",
-        position: "absolute",
-        top: position === "top" ? "0" : position === "bottom" ? "100%" : "50%",
-        left: position === "left" ? "0" : position === "right" ? "100%" : "50%",
-        transform:
-          "translate(-50%, -50%) " +
-          (position === "bottom" ? "translate(0, 75%)" : "translate(0, -75%)"),
-        rotate:
-          position === "left"
-            ? "-90deg"
-            : position === "right"
-            ? "90deg"
-            : "0deg",
-        transformOrigin: "left top",
-      }}
-    >
-      {text}
-    </p>
-  );
-}
-
-function PartyDot({
-  party,
-}: {
-  party: {
-    name: string;
-    alias: string;
-    color: [number, number, number];
-    position: [number, number];
-  };
-}) {
-  // scale from -4, -4 to 4, 4
-  const x = ((party.position[0] + 4) / 8) * 100;
-  const y = ((-party.position[1] + 4) / 8) * 100;
-
-  return (
-    <div
-      className="absolute w-4 h-4 cursor-pointer transform -translate-x-1/2 translate-y-1/2 transition-transform group"
-      style={{
-        left: `${x}%`,
-        bottom: `${y}%`,
-      }}
-    >
-      {/* tooltip */}
-      <p
-        className="text-white font-bold px-2 absolute text-md -translate-x-1/2 -translate-y-4/3 whitespace-nowrap transition-opacity group-hover:-translate-y-3/2 transition-transform duration-200 pointer-events-none"
-        style={{
-          backgroundColor: `rgb(${party.color[0]}, ${party.color[1]}, ${party.color[2]})`,
-          transform: "translateX(.5rem)",
-        }}
-      >
-        {party.alias}
-      </p>
-      {/* Outer border */}
-      <div
-        className="transition-transform duration-200 group-hover:scale-125 absolute w-[24px] h-[24px] rounded-full -left-[4px] -top-[4px]"
-        style={{
-          backgroundColor: `rgba(${party.color[0]}, ${party.color[1]}, ${party.color[2]}, 0.3)`,
-        }}
-      />
-      {/* White gap layer */}
-      <div className="transition-transform duration-200  group-hover:scale-125 absolute w-[20px] h-[20px] rounded-full -left-[2px] -top-[2px] bg-white" />
-      {/* Inner fill */}
-      <div
-        className="transition-transform duration-200  group-hover:scale-125 relative w-full h-full rounded-full"
-        style={{
-          backgroundColor: `rgb(${party.color[0]}, ${party.color[1]}, ${party.color[2]})`,
-        }}
-      />
-    </div>
-  );
-}
-
+import AxisLabel from "./AxisLabel";
+import PartyIndicator from "./PartyIndicator";
 export default function PoliticalCompass() {
   const { parties } = useParties();
 
@@ -100,25 +12,24 @@ export default function PoliticalCompass() {
       <div className="relative w-full max-w-[500px] aspect-square bg-white border border-gray-200">
         {/* Quadrants */}
         <div className="grid grid-cols-2 grid-rows-2 h-full">
-          <Quadrant />
-          <Quadrant />
-          <Quadrant />
-          <Quadrant />
+          {[...Array(4)].map((_, i) => (
+            <Quadrant key={i} />
+          ))}
         </div>
 
         {/* Axis Labels */}
         <div className="absolute top-0 left-0 w-full h-full">
           {/* Left label */}
-          <Label text="Economic Left" position="left" />
-          <Label text="Economic Right" position="right" />
-          <Label text="Social Progressive" position="top" />
-          <Label text="Social Conservative" position="bottom" />
+          <AxisLabel text="Economic Left" position="left" />
+          <AxisLabel text="Economic Right" position="right" />
+          <AxisLabel text="Social Progressive" position="top" />
+          <AxisLabel text="Social Conservative" position="bottom" />
         </div>
 
         {/* Party Dots */}
         <div className="absolute inset-0">
           {parties.map((party, index) => (
-            <PartyDot key={index} party={party} />
+            <PartyIndicator key={index} party={party} />
           ))}
         </div>
       </div>
