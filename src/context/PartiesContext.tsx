@@ -3,6 +3,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 export interface Party {
   name: string;
+  alias: string;
   color: [number, number, number];
   position: [number, number];
 }
@@ -20,21 +21,25 @@ export function PartiesProvider({ children }: { children: ReactNode }) {
   const [parties, setParties] = useState<Party[]>([
     {
       name: "Liberal National Party",
+      alias: "LNP",
       color: [100, 149, 237],
       position: [1, 1.05],
     },
     {
       name: "One Nation",
+      alias: "ON",
       color: [255, 165, 0],
       position: [1.4, 3.2],
     },
     {
       name: "The Greens",
+      alias: "GRN",
       color: [84, 199, 84],
       position: [-3.6, -3.2],
     },
     {
       name: "Australian Labor Party",
+      alias: "ALP",
       color: [235, 10, 40],
       position: [-1, -1.4],
     },

@@ -60,6 +60,7 @@ function PartyDot({
 }: {
   party: {
     name: string;
+    alias: string;
     color: [number, number, number];
     position: [number, number];
   };
@@ -70,25 +71,35 @@ function PartyDot({
 
   return (
     <div
-      className="absolute w-4 h-4 cursor-pointer transform -translate-x-1/2 translate-y-1/2 transition-transform hover:scale-125"
+      className="absolute w-4 h-4 cursor-pointer transform -translate-x-1/2 translate-y-1/2 transition-transform group"
       style={{
         left: `${x}%`,
         bottom: `${y}%`,
       }}
       title={`${party.name} (${party.position[0]}, ${party.position[1]})`}
     >
+      {/* tooltip */}
+      <p
+        className="text-white font-bold px-2 absolute text-md -translate-x-1/2 -translate-y-4/3 whitespace-nowrap transition-opacity group-hover:-translate-y-3/2 transition-transform duration-200 pointer-events-none"
+        style={{
+          backgroundColor: `rgb(${party.color[0]}, ${party.color[1]}, ${party.color[2]})`,
+          transform: "translateX(.5rem)",
+        }}
+      >
+        {party.alias}
+      </p>
       {/* Outer border */}
       <div
-        className="absolute w-[24px] h-[24px] rounded-full -left-[4px] -top-[4px]"
+        className="transition-transform duration-200 group-hover:scale-125 absolute w-[24px] h-[24px] rounded-full -left-[4px] -top-[4px]"
         style={{
           backgroundColor: `rgba(${party.color[0]}, ${party.color[1]}, ${party.color[2]}, 0.3)`,
         }}
       />
       {/* White gap layer */}
-      <div className="absolute w-[20px] h-[20px] rounded-full -left-[2px] -top-[2px] bg-white" />
+      <div className="transition-transform duration-200  group-hover:scale-125 absolute w-[20px] h-[20px] rounded-full -left-[2px] -top-[2px] bg-white" />
       {/* Inner fill */}
       <div
-        className="relative w-full h-full rounded-full"
+        className="transition-transform duration-200  group-hover:scale-125 relative w-full h-full rounded-full"
         style={{
           backgroundColor: `rgb(${party.color[0]}, ${party.color[1]}, ${party.color[2]})`,
         }}
