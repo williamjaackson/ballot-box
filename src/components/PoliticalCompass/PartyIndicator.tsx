@@ -1,10 +1,10 @@
 function Label({ text, color }: { text: string; color: [number, number, number] }) {
     return (
         <p
-            className="text-white font-bold px-2 absolute text-md -translate-x-1/2 -translate-y-4/3 whitespace-nowrap transition-opacity group-hover:-translate-y-3/2 transition-transform duration-200"
+            className="text-white font-bold px-2 absolute text-md -translate-y-4/3 whitespace-nowrap transition-opacity group-hover:-translate-y-3/2 transition-transform duration-200"
             style={{
                 backgroundColor: `rgb(${color[0]}, ${color[1]}, ${color[2]})`,
-                transform: "translateX(.5rem)",
+                transform: "translateX(-.5rem)",
             }}
         >
             {text}
@@ -27,46 +27,25 @@ export default function PartyIndicator({
   const y = ((-party.position[1] + 4) / 8) * 100;
 
   return (
-    <div className="absolute rounded-full" style={{
+    <div className="absolute" style={{
         left: `${x}%`,
         bottom: `${y}%`,
         transform: "translate(-50%, 50%)",
-        border: `3px solid rgba(${party.color[0]}, ${party.color[1]}, ${party.color[2]}, 0.3)`,
     }}>
-        <div className="relative rounded-full bg-white w-5 h-5 grid place-items-center">
-            <div className="rounded-full"
-            style={{
-                width: "1rem",
-                height: "1rem",
-                backgroundColor: `rgb(${party.color[0]}, ${party.color[1]}, ${party.color[2]})`,
-            }}/>
+        {/* border */}
+        <div className="rounded-full" style={{
+                border: `3px solid rgba(${party.color[0]}, ${party.color[1]}, ${party.color[2]}, 0.3)`,
+        }}>
+            {/* white circle */}
+            <div className="rounded-full bg-white w-5 h-5 grid place-items-center">
+                {/* fill colour */}
+                <div className="rounded-full" style={{
+                    width: "1rem",
+                    height: "1rem",
+                    backgroundColor: `rgb(${party.color[0]}, ${party.color[1]}, ${party.color[2]})`,
+                }}/>
+            </div>
         </div>
     </div>
-    // <div
-    //   className="absolute w-4 h-4 cursor-pointer transform -translate-x-1/2 translate-y-1/2 transition-transform group"
-    //   style={{
-    //     left: `${x}%`,
-    //     bottom: `${y}%`,
-    //   }}
-    // >
-    //   {/* tooltip */}
-    //   <Label text={party.alias} color={party.color} />
-    //   {/* Outer border */}
-    //   <div
-    //     className="transition-transform duration-200 group-hover:scale-125 absolute w-[24px] h-[24px] rounded-full -left-[4px] -top-[4px]"
-    //     style={{
-    //       backgroundColor: `rgba(${party.color[0]}, ${party.color[1]}, ${party.color[2]}, 0.3)`,
-    //     }}
-    //   />
-    //   {/* White gap layer */}
-    //   <div className="transition-transform duration-200  group-hover:scale-125 absolute w-[20px] h-[20px] rounded-full -left-[2px] -top-[2px] bg-white" />
-    //   {/* Inner fill */}
-    //   <div
-    //     className="transition-transform duration-200  group-hover:scale-125 relative w-full h-full rounded-full"
-    //     style={{
-    //       backgroundColor: `rgb(${party.color[0]}, ${party.color[1]}, ${party.color[2]})`,
-    //     }}
-    //   />
-    // </div>
   );
 }
