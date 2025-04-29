@@ -10,13 +10,6 @@ export default function PoliticalCompass() {
   return (
     <div className="flex flex-col items-center gap-4 w-full p-10">
       <div className="relative w-full max-w-[500px] aspect-square bg-white border border-gray-200">
-        {/* Quadrants */}
-        <div className="grid grid-cols-2 grid-rows-2 h-full">
-          {[...Array(4)].map((_, i) => (
-            <Quadrant key={i} />
-          ))}
-        </div>
-
         {/* Axis Labels */}
         <div className="absolute top-0 left-0 w-full h-full">
           {/* Left label */}
@@ -26,16 +19,29 @@ export default function PoliticalCompass() {
           <AxisLabel text="Social Conservative" position="bottom" />
         </div>
 
-        {/* Party Dots */}
-        <div className="absolute inset-0">
-          {/* {parties.map((party, index) => (
+        <div className="relative w-full h-full">
+          <canvas
+            id="canvas"
+            className="absolute top-0 left-0 w-full h-full border border-red-500"
+          />
+          {/* Quadrants */}
+          <div className="grid grid-cols-2 grid-rows-2 h-full">
+            {[...Array(4)].map((_, i) => (
+              <Quadrant key={i} />
+            ))}
+          </div>
+
+          {/* Party Dots */}
+          <div className="absolute inset-0">
+            {/* {parties.map((party, index) => (
             <PartyIndicator key={index} party={party} />
           ))} */}
-          {parties
-            .sort((a, b) => a.position[1] - b.position[1])
-            .map((party, index) => (
-              <PartyIndicator key={index} party={party} />
-            ))}
+            {parties
+              .sort((a, b) => a.position[1] - b.position[1])
+              .map((party, index) => (
+                <PartyIndicator key={index} party={party} />
+              ))}
+          </div>
         </div>
       </div>
     </div>
