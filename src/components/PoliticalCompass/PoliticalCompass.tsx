@@ -20,10 +20,7 @@ export default function PoliticalCompass() {
         </div>
 
         <div className="relative w-full h-full">
-          <canvas
-            id="canvas"
-            className="absolute top-0 left-0 w-full h-full border border-red-500"
-          />
+          <canvas id="canvas" className="absolute top-0 left-0 w-full h-full" />
           {/* Quadrants */}
           <div className="grid grid-cols-2 grid-rows-2 h-full">
             {[...Array(4)].map((_, i) => (
