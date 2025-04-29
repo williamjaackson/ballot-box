@@ -28,9 +28,14 @@ export default function PoliticalCompass() {
 
         {/* Party Dots */}
         <div className="absolute inset-0">
-          {parties.map((party, index) => (
+          {/* {parties.map((party, index) => (
             <PartyIndicator key={index} party={party} />
-          ))}
+          ))} */}
+          {parties
+            .sort((a, b) => a.position[1] - b.position[1])
+            .map((party, index) => (
+              <PartyIndicator key={index} party={party} />
+            ))}
         </div>
       </div>
     </div>
