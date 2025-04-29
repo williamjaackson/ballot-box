@@ -3,7 +3,7 @@ import { Party } from "@/context/PartiesContext";
 function Label({ party }: { party: Party }) {
   return (
     <p
-      className="pointer-events-none group-hover:-translate-y-1/4 transition-transform duration-200 text-white font-bold absolute text-md whitespace-nowrap transition-opacity left-1/2 -translate-x-1/2 px-2"
+      className="pointer-events-none group-active:-translate-y-1/5 group-hover:-translate-y-1/4 transition-transform duration-200 text-white font-bold absolute text-md whitespace-nowrap transition-opacity left-1/2 -translate-x-1/2 px-2"
       style={{
         backgroundColor: `rgb(${party.color[0]}, ${party.color[1]}, ${party.color[2]})`,
         transform: "translateY(-100%) translateY(-4px)",
@@ -32,7 +32,7 @@ export default function PartyIndicator({ party }: { party: Party }) {
       <Label party={party} />
       {/* border */}
       <div
-        className="group-hover:scale-125 transition-transform duration-200 rounded-full"
+        className="group-hover:scale-125 group-active:scale-115 transition-transform duration-200 rounded-full"
         style={{
           border: `3px solid rgba(${party.color[0]}, ${party.color[1]}, ${party.color[2]}, 0.3)`,
         }}
