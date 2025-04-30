@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { ChevronRight, Vote, X } from "lucide-react";
 import Parties from "./Parties";
+import PoliticalCompass from "../PoliticalCompass/PoliticalCompass";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,6 +50,9 @@ export default function Sidebar() {
             <hr className="my-2" />
             {/* Political Parties */}
             <Parties />
+
+            {/* Political Compass */}
+            <PoliticalCompass />
           </div>
         </div>
 
