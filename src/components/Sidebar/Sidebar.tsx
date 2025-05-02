@@ -50,9 +50,6 @@ export default function Sidebar() {
             <hr className="my-2" />
             {/* Political Parties */}
             <Parties />
-
-            {/* Political Compass */}
-            <PoliticalCompass />
           </div>
         </div>
 
